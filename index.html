@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Four Owls Partners · Practical help with AI</title>
+<meta name="description" content="Four Owls Partners helps companies put AI to work: find where it helps, get people using it, and build the tools. Massachusetts.">
+<link rel="canonical" href="https://fourowlspartners.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Four Owls Partners">
+<meta property="og:description" content="Practical help with AI, from first steps to working tools.">
+<meta property="og:url" content="https://fourowlspartners.com/">
+<meta property="og:image" content="https://fourowlspartners.com/assets/brand/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#171c32">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/brand/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/brand/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/brand/icon-192.png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/philosopher-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Brand kit fonts: Philosopher (FOUR OWLS) for display, Montserrat (PARTNERS) for text. */
+@font-face { font-family: "Philosopher"; src: url("assets/fonts/philosopher-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Philosopher"; src: url("assets/fonts/philosopher-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("assets/fonts/montserrat-latin.woff2") format("woff2"); font-weight: 400 800; font-display: swap; }
+
+:root {
+  --navy: #171c32;
+  --navy-deep: #10142a;
+  --navy-plate: #20264a;
+  --rose: #ac7c81;
+  --rose-light: #dcb8bb;
+  --ink: #eef0f5;
+  --ink-soft: #c3c7d6;
+  --line: 12px;
+  --gutter: clamp(16px, 4vw, 56px);
+  --owl-h: clamp(120px, 15vw, 190px);
+  --owl-w: calc(var(--owl-h) * 0.775);
+  --track-mb: calc(var(--owl-h) * 0.035);
+  --hero-pb: clamp(48px, 7vw, 96px);
+  /* rail centre = left end of the hero bar, i.e. where the owl's tail meets the line */
+  --rail-x: calc(var(--owl-w) - 6px + var(--line) / 2);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--navy);
+  color: var(--ink);
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  font-weight: 400;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+
+::selection { background: var(--rose); color: var(--navy-deep); }
+html { scrollbar-color: var(--rose) var(--navy-deep); }
+
+a { color: var(--rose-light); text-decoration-thickness: 2px; text-underline-offset: 0.22em; }
+a:hover { color: var(--ink); }
+:focus-visible { outline: 3px solid var(--rose-light); outline-offset: 4px; border-radius: 4px; }
+
+.skip {
+  position: absolute; left: var(--gutter); top: -60px; z-index: 20;
+  background: var(--ink); color: var(--navy); padding: 10px 16px; font-weight: 700; border-radius: 6px;
+}
+.skip:focus { top: 12px; }
+
+/* ---------- header ---------- */
+.top {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 14px var(--gutter);
+  background: color-mix(in srgb, var(--navy) 92%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+}
+.top .brand { display: block; line-height: 0; }
+.top .brand img { height: 40px; width: auto; }
+.top nav { display: flex; align-items: center; gap: clamp(12px, 2.4vw, 28px); }
+.top nav a.quiet { color: var(--ink-soft); text-decoration: none; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.02em; }
+.top nav a.quiet:hover { color: var(--ink); }
+
+.plate {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--ink); color: var(--navy);
+  font-weight: 700; font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase;
+  text-decoration: none; padding: 11px 18px 9px; border-radius: 6px;
+  box-shadow: 0 8px 20px -10px rgba(0,0,0,.6);
+  transition: background .2s var(--ease-out), transform .2s var(--ease-out);
+}
+.plate:hover { background: var(--rose-light); color: var(--navy-deep); transform: translateY(-1px); }
+.plate .arrow { width: 18px; height: 18px; flex: none; }
+
+@media (max-width: 560px) {
+  .top nav a.quiet { display: none; }
+  .top .brand img { height: 32px; }
+  .plate { padding: 10px 14px 8px; font-size: 0.85rem; }
+}
+
+/* ---------- hero ---------- */
+.hero { padding: clamp(56px, 10vw, 128px) var(--gutter) var(--hero-pb); }
+.hero h1 {
+  margin: 0 0 24px;
+  font-family: "Philosopher", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 5.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  max-width: 20ch;
+  text-wrap: balance;
+}
+.hero h1 .accent { color: var(--rose); }
+.hero .lede { margin: 0; max-width: 58ch; font-size: clamp(1.15rem, 1.6vw, 1.35rem); color: var(--ink-soft); }
+.hero .lede.plain { margin-top: 14px; color: var(--ink); font-weight: 600; }
+
+/* the line diagram */
+.diagram {
+  margin-top: clamp(48px, 7vw, 88px);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: end;
+  gap: 0;
+  position: relative;
+}
+.diagram .drop {
+  position: absolute; left: var(--rail-x); transform: translateX(-50%);
+  width: var(--line); background: var(--rose); border-radius: var(--line) var(--line) 0 0;
+  bottom: calc(-1 * var(--hero-pb));
+  height: calc(var(--hero-pb) + var(--track-mb) + 96px + var(--line));
+}
+.diagram .owl { height: var(--owl-h); width: auto; display: block; margin-right: -6px; position: relative; z-index: 1; }
+.track {
+  position: relative;
+  height: calc(var(--line) + 108px);
+  margin-bottom: var(--track-mb);
+}
+.track .bar {
+  position: absolute; left: 0; right: -2px; bottom: 96px; height: var(--line);
+  background: var(--rose); border-radius: var(--line);
+  transform-origin: left center;
+}
+.track ol { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; display: flex; justify-content: space-around; }
+.stop { position: relative; display: flex; flex-direction: column; align-items: center; }
+.stop a { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: var(--ink); }
+.roundel {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--ink); border: 7px solid var(--rose);
+  display: grid; place-items: center;
+  color: var(--navy); font-weight: 800; font-size: 0.8rem; letter-spacing: 0.02em;
+  margin-top: calc(108px - 96px - var(--line) / 2 - 22px + 12px);
+  transition: transform .25s var(--ease-out), background .25s var(--ease-out);
+}
+.stop a:hover .roundel { transform: scale(1.12); background: var(--rose-light); }
+.stop .name { margin-top: 14px; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.22em; text-transform: uppercase; }
+.stop .sub { font-size: 0.9rem; color: var(--ink-soft); }
+.terminus {
+  align-self: end; margin-bottom: calc(var(--track-mb) + 96px + var(--line) / 2 - 26px);
+}
+.terminus .plate { height: 52px; padding: 4px 22px 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .track .bar { animation: draw 1.4s var(--ease-out) .25s both; }
+  .js .diagram .drop { animation: drop 0.6s var(--ease-out) 1.5s both; transform-origin: center top; }
+  .js .stop { animation: stop-in .5s var(--ease-out) both; }
+  .js .stop:nth-child(1) { animation-delay: .55s; }
+  .js .stop:nth-child(2) { animation-delay: .85s; }
+  .js .stop:nth-child(3) { animation-delay: 1.15s; }
+  .js .terminus { animation: stop-in .5s var(--ease-out) 1.45s both; }
+}
+@keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes drop { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes stop-in { from { opacity: 0; transform: translateY(8px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+
+/* vertical diagram on narrow screens: transit maps rotate, they don't shrink */
+@media (max-width: 820px) {
+  .diagram { grid-template-columns: auto 1fr; grid-template-rows: auto auto; align-items: start; }
+  :root { --owl-h: 120px; --rail-x: calc(120px * 0.47 + var(--line) / 2); }
+  .diagram .owl { height: 120px; grid-column: 1; grid-row: 1; margin: 0; }
+  .diagram .drop { top: 120px; height: auto; border-radius: 0; }
+  .track { grid-column: 1; grid-row: 2; height: auto; margin: -4px 0 0; width: 120px; padding: 8px 0 0; }
+  .track .bar { left: calc(120px * 0.47); right: auto; top: 0; bottom: 0; width: var(--line); height: auto; transform-origin: center top; }
+  .track ol { position: relative; flex-direction: column; gap: 22px; padding: 30px 0 30px; }
+  .stop { flex-direction: row; align-items: center; padding-left: calc(120px * 0.47 + var(--line) / 2 - 22px); }
+  .stop a { flex-direction: row; gap: 14px; }
+  .roundel { margin: 0; flex: none; }
+  .stop .name { margin: 0; }
+  .stop .sub { display: none; }
+  .stop a > span:last-child { white-space: nowrap; }
+  .terminus { grid-column: 1 / -1; grid-row: 3; margin: 0 0 0 calc(var(--rail-x) + 30px); }
+  @keyframes draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+}
+
+/* ---------- route ---------- */
+.line { position: relative; }
+.route { padding: clamp(48px, 7vw, 96px) var(--gutter) 24px; }
+.route-head { margin-left: calc(var(--rail-x) + 48px); max-width: 60ch; }
+h2 {
+  font-family: "Philosopher", Georgia, serif;
+  font-weight: 700; letter-spacing: -0.005em; line-height: 1.05;
+  font-size: clamp(2rem, 4.4vw, 3.4rem); margin: 0 0 16px; text-wrap: balance;
+}
+.route-head p { color: var(--ink-soft); margin: 0; }
+
+.rail { position: absolute; left: calc(var(--gutter) + var(--rail-x)); top: 0; bottom: 0; width: var(--line); transform: translateX(-50%); z-index: 1; }
+.rail .ahead, .rail .behind { border-top-left-radius: 0; border-top-right-radius: 0; }
+.rail .ahead {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(to bottom, color-mix(in srgb, var(--rose) 55%, transparent) 0 18px, transparent 18px 32px);
+  border-radius: var(--line);
+}
+.rail .behind {
+  position: absolute; left: 0; right: 0; top: 0; height: calc(var(--p, 1) * 100%);
+  background: var(--rose); border-radius: var(--line);
+}
+
+.station {
+  position: relative;
+  display: grid; grid-template-columns: var(--rail-x) 1fr; column-gap: 48px;
+  padding: clamp(56px, 8vw, 104px) 0 0;
+}
+.station .stamp { position: relative; }
+.station .stamp .roundel {
+  position: absolute; left: var(--rail-x); top: 6px; transform: translateX(-50%);
+  width: 64px; height: 64px; border-width: 10px; font-size: 1.05rem; margin: 0; z-index: 2;
+  transition: background .4s var(--ease-out), border-color .4s var(--ease-out);
+}
+.station:not(.reached) .stamp .roundel { background: var(--navy); color: var(--rose-light); border-color: color-mix(in srgb, var(--rose) 60%, var(--navy)); }
+.station.interchange .stamp .roundel { box-shadow: 0 0 0 6px var(--navy), 0 0 0 12px var(--rose); }
+
+.station .body { max-width: 980px; }
+.station h2 { display: flex; align-items: baseline; gap: 0.4em; flex-wrap: wrap; }
+.station h2 .verb { color: var(--rose); }
+.station .line-name { font-size: clamp(1.25rem, 2vw, 1.6rem); font-weight: 600; color: var(--ink); margin: 0 0 28px; max-width: 40ch; }
+
+.cols { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.cols ul { margin: 0; padding: 0; list-style: none; }
+.cols li { position: relative; padding: 0 0 14px 26px; color: var(--ink-soft); max-width: 60ch; }
+.cols li::before {
+  content: ""; position: absolute; left: 2px; top: 0.55em; width: 10px; height: 10px; border-radius: 50%;
+  border: 3px solid var(--rose);
+}
+.cols li strong { color: var(--ink); font-weight: 600; }
+
+.board {
+  background: var(--ink); color: var(--navy);
+  border-radius: 0 0 6px 6px;
+  border-top: 8px solid var(--rose);
+  padding: 20px 24px 22px;
+}
+.board p { margin: 0; font-size: 1.1rem; line-height: 1.5; }
+.board strong { font-weight: 800; }
+
+@media (max-width: 820px) {
+  .route-head { margin-left: calc(var(--rail-x) + 36px); }
+  .station { column-gap: 36px; }
+  .station .stamp .roundel { width: 52px; height: 52px; border-width: 8px; font-size: 0.9rem; }
+  .cols { grid-template-columns: 1fr; }
+}
+
+/* ---------- difference + founder ---------- */
+.notice {
+  margin: clamp(72px, 10vw, 128px) var(--gutter) 0 calc(var(--gutter) + var(--rail-x) + 48px);
+  background: var(--ink); color: var(--navy);
+  border-radius: 12px;
+  padding: clamp(28px, 5vw, 56px);
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(24px, 5vw, 72px);
+}
+.notice { position: relative; }
+.notice h2 { color: var(--navy); margin: 0; }
+.notice .owl-stamp { display: block; width: 64px; height: auto; margin-top: 28px; }
+.principles { margin: 0; display: grid; gap: 14px; }
+.principles div { display: grid; grid-template-columns: 9.5rem 1fr; gap: 12px; align-items: baseline; }
+.principles dt { font-weight: 800; font-size: 1.15rem; }
+.principles dd { margin: 0; font-size: 1.15rem; }
+@media (max-width: 480px) { .principles div { grid-template-columns: 1fr; gap: 0; } }
+@media (max-width: 820px) { .notice { grid-template-columns: 1fr; } }
+
+.founder {
+  padding: clamp(72px, 10vw, 128px) var(--gutter) 0 calc(var(--gutter) + var(--rail-x) + 48px);
+}
+.founder { display: grid; grid-template-columns: minmax(180px, 280px) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.founder .headshot { width: 100%; height: auto; display: block; border-radius: 0 0 6px 6px; border-top: 8px solid var(--rose); }
+.founder h2 { margin-bottom: 20px; }
+.founder h2 .role { color: var(--rose); }
+.founder .bio p { margin: 0 0 18px; max-width: 62ch; color: var(--ink-soft); }
+.founder .bio h2 + p { color: var(--ink); font-size: 1.25rem; line-height: 1.55; }
+.founder .bio .name-note { font-size: 1rem; }
+.founder .linkedin { font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+@media (max-width: 820px) {
+  .notice { margin-left: calc(var(--gutter) + var(--rail-x) + 36px); }
+  .founder { padding-left: calc(var(--gutter) + var(--rail-x) + 36px); grid-template-columns: 1fr; }
+  .founder .headshot { max-width: 220px; }
+}
+
+/* ---------- terminus ---------- */
+.end {
+  margin: clamp(72px, 10vw, 128px) 0 0;
+  padding: clamp(56px, 8vw, 104px) var(--gutter);
+  background: var(--navy-deep);
+  position: relative;
+}
+.end .end-roundel {
+  position: absolute; left: calc(var(--gutter) + var(--rail-x)); transform: translate(-50%, -50%);
+  width: 64px; height: 64px; border-radius: 50%; z-index: 2;
+  background: var(--rose) url("assets/brand/owl-white-on-rose.png") center / cover no-repeat;
+  width: 96px; height: 96px; border: 0;
+  box-shadow: 0 0 0 6px var(--navy-deep), 0 0 0 12px var(--rose);
+}
+.end .inner { margin-left: calc(var(--rail-x) + 48px); }
+.end h2 { font-size: clamp(2.2rem, 5.5vw, 4.5rem); max-width: 16ch; }
+.end p { color: var(--ink-soft); max-width: 52ch; margin: 0 0 32px; }
+.end .plate { font-size: 1.05rem; padding: 18px 24px 16px; position: relative; }
+.end .addr { display: block; margin-top: 18px; font-size: 1rem; }
+@media (max-width: 820px) { .end .inner { margin-left: calc(var(--rail-x) + 36px); } }
+
+footer {
+  background: var(--navy-deep);
+  padding: 28px var(--gutter) 40px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+  display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: center; justify-content: space-between;
+  font-size: 0.92rem; color: var(--ink-soft);
+}
+footer .facts { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0; padding: 0; list-style: none; }
+footer .facts li:first-child { color: var(--ink); font-weight: 600; }
+footer .logo { width: 180px; height: auto; display: block; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <a class="brand" href="#top" aria-label="Four Owls Partners, home"><img src="assets/brand/wordmark-reversed.png" alt="Four Owls Partners" width="900" height="189"></a>
+  <nav aria-label="Primary">
+    <a class="quiet" href="#route">The route</a>
+    <a class="quiet" href="#founder">Founder</a>
+    <a class="plate" href="mailto:steve@fourowlspartners.com?subject=Four%20Owls%20%E2%80%94%20intro">Email Steven</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <h1 id="hero-title">Feeling behind on <span class="accent">AI?</span></h1>
+    <p class="lede">Don't know where to start, or ready to push further? Four Owls Partners helps companies put AI to work, from first steps to technical builds at the leading edge.</p>
+    <p class="lede plain">It's never too late to start.</p>
+
+    <div class="diagram" aria-label="Three steps: Assess, Transform, Build">
+      <img class="owl" src="assets/brand/owl-rose.svg" alt="" width="236" height="305">
+      <div class="drop" aria-hidden="true"></div>
+      <div class="track">
+        <div class="bar" aria-hidden="true"></div>
+        <ol>
+          <li class="stop"><a href="#a1-assess"><span class="roundel" aria-hidden="true">A1</span><span><span class="name">Assess</span><br><span class="sub">Find where AI helps</span></span></a></li>
+          <li class="stop"><a href="#t2-transform"><span class="roundel" aria-hidden="true">T2</span><span><span class="name">Transform</span><br><span class="sub">Get people using it</span></span></a></li>
+          <li class="stop"><a href="#b3-build"><span class="roundel" aria-hidden="true">B3</span><span><span class="name">Build</span><br><span class="sub">Build the tools</span></span></a></li>
+        </ol>
+      </div>
+      <div class="terminus"><a class="plate" href="mailto:steve@fourowlspartners.com?subject=Four%20Owls%20%E2%80%94%20intro">Email Steven <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </section>
+
+  <div class="line" id="line">
+  <div class="rail" aria-hidden="true"><div class="ahead"></div><div class="behind"></div></div>
+  <section class="route" id="route" aria-labelledby="route-title">
+    <div class="route-head">
+      <h2 id="route-title">How it works</h2>
+      <p>Three steps. Start at whichever one fits where you are.</p>
+    </div>
+
+    <article class="station" id="a1-assess" aria-labelledby="a1-title">
+      <div class="stamp"><span class="roundel" aria-hidden="true">A1</span></div>
+      <div class="body">
+        <h2 id="a1-title"><span class="verb">Assess.</span> Find where AI helps.</h2>
+        <p class="line-name">Understand the work before buying tools.</p>
+        <div class="cols">
+          <ul>
+            <li><strong>Interviews</strong> with the people doing the work.</li>
+            <li><strong>Data map:</strong> where your data is and what's usable.</li>
+            <li><strong>Short list of uses,</strong> ranked by value and effort.</li>
+            <li><strong>Rules</strong> for what data can go where.</li>
+          </ul>
+          <div class="board"><p><strong>Result:</strong> a plan your team can carry out.</p></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="station" id="t2-transform" aria-labelledby="t2-title">
+      <div class="stamp"><span class="roundel" aria-hidden="true">T2</span></div>
+      <div class="body">
+        <h2 id="t2-title"><span class="verb">Transform.</span> Get people using it.</h2>
+        <p class="line-name">Licenses alone don't change how work gets done.</p>
+        <div class="cols">
+          <ul>
+            <li><strong>Training</strong> built around each team's actual work.</li>
+            <li><strong>Governance and tools</strong> that IT, legal, and finance can approve.</li>
+            <li><strong>Usage tracking:</strong> who uses what, and whether it helps.</li>
+            <li><strong>A simple way</strong> for teams to suggest new uses.</li>
+          </ul>
+          <div class="board"><p><strong>Result:</strong> AI as part of everyday work, with numbers to show it.</p></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="station" id="b3-build" aria-labelledby="b3-title">
+      <div class="stamp"><span class="roundel" aria-hidden="true">B3</span></div>
+      <div class="body">
+        <h2 id="b3-title"><span class="verb">Build.</span> Build the tools.</h2>
+        <p class="line-name">Working tools inside real workflows.</p>
+        <div class="cols">
+          <ul>
+            <li><strong>Agents and automations</strong> for work like month-end close, contract review, and operations queues.</li>
+            <li><strong>Any vendor or model</strong> that fits. No product to sell.</li>
+            <li><strong>Documentation and handoff</strong> so your team can run it.</li>
+          </ul>
+          <div class="board"><p><strong>Result:</strong> software your team uses and can maintain.</p></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="station interchange" id="fractional" aria-labelledby="fx-title">
+      <div class="stamp"><span class="roundel" aria-hidden="true">FX</span></div>
+      <div class="body">
+        <h2 id="fx-title"><span class="verb">Or:</span> a part-time AI lead.</h2>
+        <p class="line-name">No Head of AI yet? Steven can fill the role part-time while you decide whether to hire.</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="notice" aria-labelledby="diff-title">
+    <div>
+      <h2 id="diff-title">AI is not magic, but it is powerful.</h2>
+      <img class="owl-stamp" src="assets/brand/owl-rose.svg" alt="" width="236" height="305">
+    </div>
+    <dl class="principles">
+      <div><dt>Pragmatic.</dt><dd>Start with the problem, not the tool.</dd></div>
+      <div><dt>Humble.</dt><dd>Nobody has this figured out. Test, measure, adjust.</dd></div>
+      <div><dt>Independent.</dt><dd>No vendor to sell. Use what fits.</dd></div>
+      <div><dt>Hands-on.</dt><dd>The work gets done, not just planned.</dd></div>
+    </dl>
+  </section>
+
+  <section class="founder" id="founder" aria-labelledby="founder-title">
+    <img class="headshot" src="assets/steven-gardos.jpg" alt="Steven Gardos" width="700" height="801">
+    <div class="bio">
+      <h2 id="founder-title">Steven Gardos, <span class="role">founder.</span></h2>
+      <p>Steven has more than 20 years of experience running every part of engineering and leading technology and AI transformation.</p>
+      <p>Middlebury College graduate. Based in Massachusetts.</p>
+      <p><a class="linkedin" href="https://www.linkedin.com/in/stevengardos/" rel="me noopener" target="_blank">LinkedIn profile <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></p>
+      <p class="name-note">Why four owls? One for each of his kids.</p>
+    </div>
+  </section>
+
+  <section class="end" id="contact" aria-labelledby="contact-title">
+    <span class="end-roundel" id="end-roundel" aria-hidden="true"></span>
+    <div class="inner">
+      <h2 id="contact-title">Start today, not tomorrow.</h2>
+      <p>Email Steven with what you're working on.</p>
+      <a class="plate" href="mailto:steve@fourowlspartners.com?subject=Four%20Owls%20%E2%80%94%20intro">Email Steven <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="addr" href="mailto:steve@fourowlspartners.com">steve@fourowlspartners.com</a>
+    </div>
+  </section>
+  </div>
+</main>
+
+<footer>
+  <ul class="facts">
+    <li>Four Owls Partners LLC</li>
+    <li>Massachusetts</li>
+    <li><a href="mailto:steve@fourowlspartners.com">steve@fourowlspartners.com</a></li>
+    <li>&copy; <span id="yr">2026</span></li>
+  </ul>
+  <img class="logo" src="assets/brand/logo-reversed.svg" alt="Four Owls Partners" width="851" height="561">
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Scroll-committed rail: solid behind the reader, dashed ahead.
+// Runs under reduced motion too: the solid/dashed split is position information, not animation.
+(function () {
+  var line = document.getElementById('line');
+  var rail = line.querySelector('.rail');
+  var plate = document.querySelector('#contact .plate');
+  var roundel = document.getElementById('end-roundel');
+  var stations = line.querySelectorAll('.station');
+  var ticking = false;
+  function layout() {
+    var lt = line.getBoundingClientRect().top;
+    var pr = plate.getBoundingClientRect();
+    var end = pr.top + pr.height / 2 - lt;
+    roundel.style.top = (end - (roundel.offsetParent.getBoundingClientRect().top - lt)) + 'px';
+    rail.style.bottom = 'auto';
+    rail.style.height = end + 'px';
+  }
+  function update() {
+    ticking = false;
+    var r = rail.getBoundingClientRect();
+    var mark = window.innerHeight * 0.45;
+    var p = Math.min(1, Math.max(0, (mark - r.top) / r.height));
+    line.style.setProperty('--p', p.toFixed(4));
+    stations.forEach(function (s) {
+      s.classList.toggle('reached', s.getBoundingClientRect().top + 40 <= mark);
+    });
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  function onResize() { layout(); onScroll(); }
+  layout(); update();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onResize);
+  if (document.fonts) document.fonts.ready.then(onResize);
+})();
+</script>
+</body>
+</html>

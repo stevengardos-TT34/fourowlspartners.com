@@ -173,8 +173,9 @@ a:hover { color: var(--ink); }
   transition: transform .25s var(--ease-out), background .25s var(--ease-out);
 }
 .stop a:hover .roundel { transform: scale(1.12); background: var(--rose-light); }
+.stop a > span:last-child { text-align: center; }
 .stop .name { margin-top: 14px; font-weight: 600; font-size: 0.95rem; letter-spacing: 0.22em; text-transform: uppercase; }
-.stop .sub { font-size: 0.9rem; color: var(--ink-soft); }
+.stop .sub { font-size: 0.9rem; color: var(--ink-soft); display: inline-block; max-width: 22ch; text-align: center; }
 .terminus {
   align-self: end; margin-bottom: calc(var(--track-mb) + 96px + var(--line) / 2 - 26px);
 }
@@ -207,7 +208,7 @@ a:hover { color: var(--ink); }
   .roundel { margin: 0; flex: none; }
   .stop .name { margin: 0; }
   .stop .sub { display: none; }
-  .stop a > span:last-child { white-space: nowrap; }
+  .stop a > span:last-child { white-space: nowrap; text-align: left; }
   .terminus { grid-column: 1 / -1; grid-row: 3; margin: 0 0 0 calc(var(--rail-x) + 30px); }
   @keyframes draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 }
@@ -391,9 +392,9 @@ footer .logo { width: 180px; height: auto; display: block; }
       <div class="track">
         <div class="bar" aria-hidden="true"></div>
         <ol>
-          <li class="stop"><a href="#assess"><span class="roundel" aria-hidden="true">1</span><span><span class="name">Assess</span><br><span class="sub">Find where AI helps</span></span></a></li>
-          <li class="stop"><a href="#transform"><span class="roundel" aria-hidden="true">2</span><span><span class="name">Transform</span><br><span class="sub">Get people using it</span></span></a></li>
-          <li class="stop"><a href="#build"><span class="roundel" aria-hidden="true">3</span><span><span class="name">Build</span><br><span class="sub">Build the tools</span></span></a></li>
+          <li class="stop"><a href="#assess"><span class="roundel" aria-hidden="true">1</span><span><span class="name">Assess</span><br><span class="sub">Map the work and find the AI opportunities</span></span></a></li>
+          <li class="stop"><a href="#transform"><span class="roundel" aria-hidden="true">2</span><span><span class="name">Transform</span><br><span class="sub">Make AI part of how your teams work</span></span></a></li>
+          <li class="stop"><a href="#build"><span class="roundel" aria-hidden="true">3</span><span><span class="name">Build</span><br><span class="sub">Put AI to work for your business</span></span></a></li>
         </ol>
       </div>
     </div>
@@ -406,7 +407,7 @@ footer .logo { width: 180px; height: auto; display: block; }
     <article class="station" id="assess" aria-labelledby="a1-title">
       <div class="stamp"><span class="roundel" aria-hidden="true">1</span></div>
       <div class="body">
-        <h2 id="a1-title"><span class="verb">Assess.</span> Find where AI helps.</h2>
+        <h2 id="a1-title"><span class="verb">Assess.</span> Map the work and find the AI opportunities.</h2>
         <p class="line-name">Understand the work before buying tools.</p>
         <div class="cols">
           <ul>
@@ -423,7 +424,7 @@ footer .logo { width: 180px; height: auto; display: block; }
     <article class="station" id="transform" aria-labelledby="t2-title">
       <div class="stamp"><span class="roundel" aria-hidden="true">2</span></div>
       <div class="body">
-        <h2 id="t2-title"><span class="verb">Transform.</span> Get people using it.</h2>
+        <h2 id="t2-title"><span class="verb">Transform.</span> Make AI part of how your teams work.</h2>
         <p class="line-name">Licenses alone don't change how work gets done.</p>
         <div class="cols">
           <ul>
@@ -440,7 +441,7 @@ footer .logo { width: 180px; height: auto; display: block; }
     <article class="station" id="build" aria-labelledby="b3-title">
       <div class="stamp"><span class="roundel" aria-hidden="true">3</span></div>
       <div class="body">
-        <h2 id="b3-title"><span class="verb">Build.</span> Build the tools.</h2>
+        <h2 id="b3-title"><span class="verb">Build.</span> Put AI to work for your business.</h2>
         <p class="line-name">Working tools inside real workflows.</p>
         <div class="cols">
           <ul>

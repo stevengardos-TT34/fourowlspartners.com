@@ -127,10 +127,17 @@ a:hover { color: var(--ink); }
 .hero h1 .accent { color: var(--rose); }
 .hero .lede { margin: 0; max-width: 58ch; font-size: clamp(1.15rem, 1.6vw, 1.35rem); color: var(--ink-soft); }
 .hero .lede.plain { margin-top: 14px; color: var(--ink); font-weight: 600; }
+.audiences { margin: 24px 0 0; display: grid; gap: 8px; max-width: 62ch; }
+.audiences div { display: grid; grid-template-columns: 11rem 1fr; gap: 12px; align-items: baseline; }
+.audiences dt { font-weight: 700; color: var(--rose-light); }
+.audiences dd { margin: 0; color: var(--ink); }
+@media (max-width: 560px) { .audiences div { grid-template-columns: 1fr; gap: 0; } }
+.how { margin: clamp(40px, 6vw, 72px) 0 0; color: var(--ink-soft); font-size: 1.2rem; }
+.how strong { color: var(--ink); }
 
 /* the line diagram */
 .diagram {
-  margin-top: clamp(48px, 7vw, 88px);
+  margin-top: 20px;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: end;
@@ -207,7 +214,7 @@ a:hover { color: var(--ink); }
 
 /* ---------- route ---------- */
 .line { position: relative; }
-.route { padding: clamp(48px, 7vw, 96px) var(--gutter) 24px; }
+.route { padding: 0 var(--gutter) 24px; }
 .route-head { margin-left: calc(var(--rail-x) + 48px); max-width: 60ch; }
 h2 {
   font-family: "Philosopher", Georgia, serif;
@@ -346,7 +353,7 @@ footer .logo { width: 180px; height: auto; display: block; }
 <header class="top">
   <a class="brand" href="#top" aria-label="Four Owls Partners, home"><img src="assets/brand/wordmark-reversed.png" alt="Four Owls Partners" width="900" height="189"></a>
   <nav aria-label="Primary">
-    <a class="quiet" href="#route">The route</a>
+    <a class="quiet" href="#route">How it works</a>
     <a class="quiet" href="#founder">Founder</a>
     <a class="plate" href="mailto:steve@fourowlspartners.com?subject=Four%20Owls%20%E2%80%94%20intro">Email Steven</a>
   </nav>
@@ -356,7 +363,13 @@ footer .logo { width: 180px; height: auto; display: block; }
   <section class="hero" id="top" aria-labelledby="hero-title">
     <h1 id="hero-title">Feeling behind on <span class="accent">AI?</span></h1>
     <p class="lede">Don't know where to start, or ready to push further? Four Owls Partners helps companies put AI to work, from first steps to technical builds at the leading edge.</p>
+    <dl class="audiences">
+      <div><dt>Business teams</dt><dd>AI for finance, legal, and operations work.</dd></div>
+      <div><dt>Engineering teams</dt><dd>AI for coding, testing, incident response, and delivery.</dd></div>
+    </dl>
     <p class="lede plain">It's never too late to start.</p>
+
+    <p class="how"><strong>How it works:</strong> three steps. Start at whichever one fits.</p>
 
     <div class="diagram" aria-label="Three steps: Assess, Transform, Build">
       <img class="owl" src="assets/brand/owl-rose.svg" alt="" width="236" height="305">
@@ -364,42 +377,37 @@ footer .logo { width: 180px; height: auto; display: block; }
       <div class="track">
         <div class="bar" aria-hidden="true"></div>
         <ol>
-          <li class="stop"><a href="#a1-assess"><span class="roundel" aria-hidden="true">A1</span><span><span class="name">Assess</span><br><span class="sub">Find where AI helps</span></span></a></li>
-          <li class="stop"><a href="#t2-transform"><span class="roundel" aria-hidden="true">T2</span><span><span class="name">Transform</span><br><span class="sub">Get people using it</span></span></a></li>
-          <li class="stop"><a href="#b3-build"><span class="roundel" aria-hidden="true">B3</span><span><span class="name">Build</span><br><span class="sub">Build the tools</span></span></a></li>
+          <li class="stop"><a href="#assess"><span class="roundel" aria-hidden="true">1</span><span><span class="name">Assess</span><br><span class="sub">Find where AI helps</span></span></a></li>
+          <li class="stop"><a href="#transform"><span class="roundel" aria-hidden="true">2</span><span><span class="name">Transform</span><br><span class="sub">Get people using it</span></span></a></li>
+          <li class="stop"><a href="#build"><span class="roundel" aria-hidden="true">3</span><span><span class="name">Build</span><br><span class="sub">Build the tools</span></span></a></li>
         </ol>
       </div>
-      <div class="terminus"><a class="plate" href="mailto:steve@fourowlspartners.com?subject=Four%20Owls%20%E2%80%94%20intro">Email Steven <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     </div>
   </section>
 
   <div class="line" id="line">
   <div class="rail" aria-hidden="true"><div class="ahead"></div><div class="behind"></div></div>
-  <section class="route" id="route" aria-labelledby="route-title">
-    <div class="route-head">
-      <h2 id="route-title">How it works</h2>
-      <p>Three steps. Start at whichever one fits where you are.</p>
-    </div>
+  <section class="route" id="route" aria-label="How it works">
 
-    <article class="station" id="a1-assess" aria-labelledby="a1-title">
-      <div class="stamp"><span class="roundel" aria-hidden="true">A1</span></div>
+    <article class="station" id="assess" aria-labelledby="a1-title">
+      <div class="stamp"><span class="roundel" aria-hidden="true">1</span></div>
       <div class="body">
         <h2 id="a1-title"><span class="verb">Assess.</span> Find where AI helps.</h2>
         <p class="line-name">Understand the work before buying tools.</p>
         <div class="cols">
           <ul>
-            <li><strong>Interviews</strong> with the people doing the work.</li>
-            <li><strong>Data map:</strong> where your data is and what's usable.</li>
-            <li><strong>Short list of uses,</strong> ranked by value and effort.</li>
+            <li><strong>A process map</strong> of how the work gets done today, built from interviews with the people doing it.</li>
+            <li><strong>A data map</strong> showing where your data is and what's usable.</li>
+            <li><strong>A ranked list of AI uses,</strong> by value and effort.</li>
             <li><strong>Rules</strong> for what data can go where.</li>
           </ul>
-          <div class="board"><p><strong>Result:</strong> a plan your team can carry out.</p></div>
+          <div class="board"><p><strong>Result:</strong> a roadmap of what to do first, what each step needs, and who owns it.</p></div>
         </div>
       </div>
     </article>
 
-    <article class="station" id="t2-transform" aria-labelledby="t2-title">
-      <div class="stamp"><span class="roundel" aria-hidden="true">T2</span></div>
+    <article class="station" id="transform" aria-labelledby="t2-title">
+      <div class="stamp"><span class="roundel" aria-hidden="true">2</span></div>
       <div class="body">
         <h2 id="t2-title"><span class="verb">Transform.</span> Get people using it.</h2>
         <p class="line-name">Licenses alone don't change how work gets done.</p>
@@ -407,22 +415,22 @@ footer .logo { width: 180px; height: auto; display: block; }
           <ul>
             <li><strong>Training</strong> built around each team's actual work.</li>
             <li><strong>Governance and tools</strong> that IT, legal, and finance can approve.</li>
-            <li><strong>Usage tracking:</strong> who uses what, and whether it helps.</li>
-            <li><strong>A simple way</strong> for teams to suggest new uses.</li>
+            <li><strong>Usage tracking</strong> to measure who uses what, and whether it helps.</li>
+            <li><strong>An idea intake process</strong> so teams can suggest new uses and see the good ones built.</li>
           </ul>
           <div class="board"><p><strong>Result:</strong> AI as part of everyday work, with numbers to show it.</p></div>
         </div>
       </div>
     </article>
 
-    <article class="station" id="b3-build" aria-labelledby="b3-title">
-      <div class="stamp"><span class="roundel" aria-hidden="true">B3</span></div>
+    <article class="station" id="build" aria-labelledby="b3-title">
+      <div class="stamp"><span class="roundel" aria-hidden="true">3</span></div>
       <div class="body">
         <h2 id="b3-title"><span class="verb">Build.</span> Build the tools.</h2>
         <p class="line-name">Working tools inside real workflows.</p>
         <div class="cols">
           <ul>
-            <li><strong>Agents and automations</strong> for work like month-end close, contract review, and operations queues.</li>
+            <li><strong>Agents and automations</strong> for business work like month-end close and contract review, and for engineering work like testing and incident response.</li>
             <li><strong>Any vendor or model</strong> that fits. No product to sell.</li>
             <li><strong>Documentation and handoff</strong> so your team can run it.</li>
           </ul>
@@ -432,7 +440,7 @@ footer .logo { width: 180px; height: auto; display: block; }
     </article>
 
     <article class="station interchange" id="fractional" aria-labelledby="fx-title">
-      <div class="stamp"><span class="roundel" aria-hidden="true">FX</span></div>
+      <div class="stamp"><span class="roundel" aria-hidden="true">+</span></div>
       <div class="body">
         <h2 id="fx-title"><span class="verb">Or:</span> a part-time AI lead.</h2>
         <p class="line-name">No Head of AI yet? Steven can fill the role part-time while you decide whether to hire.</p>
@@ -458,6 +466,7 @@ footer .logo { width: 180px; height: auto; display: block; }
     <div class="bio">
       <h2 id="founder-title">Steven Gardos, <span class="role">founder.</span></h2>
       <p>Steven has more than 20 years of experience running every part of engineering and leading technology and AI transformation.</p>
+      <p>Most recently he built and ran an internal AI lab that shipped more than 20 tools, including financial close review, budget reporting, legal contract review, billing operations, and engineering code review. He built the platform underneath them too: MCP connectors that link AI to company systems for recruiting, HR, surveys, and billing; an internal publishing site; and the deployment, single sign-on, and monitoring the tools run on. He was the sole engineer on the team that rolled AI out company-wide to 770 people.</p>
       <p>Middlebury College graduate. Based in Wellesley, Massachusetts.</p>
       <p><a class="linkedin" href="https://www.linkedin.com/in/stevengardos/" rel="me noopener" target="_blank">LinkedIn profile <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></p>
       <p class="name-note">Why four owls? One for each of his kids.</p>
